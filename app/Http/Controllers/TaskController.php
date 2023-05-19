@@ -6,7 +6,7 @@ use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-
-        return view('task.project.index', compact('projects')); 
+        //
     }
 
     /**
@@ -25,9 +23,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
-        return view('task.project.create');
+        return view('task.task.create', compact('project'));
     }
 
     /**
@@ -36,73 +34,77 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Project $project)
     {
         $request->validate([
             'name' => 'required|string'
         ]);
 
-        Project::create([
-            'name' => $request->name
+        $priority_id = Task::pluck('id')->last();
+
+        Task::create([
+            'project_id' => $project->id,
+            'task_name' => $request->name,
+            'priority' => $priority_id + 1,
         ]);
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.show',$project->id);
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(Task $task)
     {
-        $tasks = Task::with('projects')->where('project_id', $project->id)->get();
-
-        return view('task.project.show', compact('project', 'tasks'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Task $task)
     {
-        return view('task.project.edit', compact('project'));
+        return view('task.task.edit', compact('task'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Task $task)
     {
         $request->validate([
             'name' => 'required|string'
         ]);
 
-        $project->update([
-            'name' => $request->name
+        $task->update([
+            'task_name' => $request->name
         ]);
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.show', $task->project_id);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Task $task)
     {
-        $project->delete();
+        $task->delete();
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.show', $task->project_id);
     }
 }

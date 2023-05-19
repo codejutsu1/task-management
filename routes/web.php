@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProjectController;
 
 /*
@@ -19,5 +20,9 @@ Route::get('/', function () {
 })->name('task.index');
 
 Route::resource('projects', ProjectController::class);
+Route::resource('tasks', TaskController::class)->except('index');
+
+Route::get('tasks/create/{project}', [ TaskController::class, 'create'])->name('tasks.create');
+Route::post('tasks/store/{project}', [ TaskController::class, 'store'])->name('tasks.store');
 
 require __DIR__.'/auth.php';
