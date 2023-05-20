@@ -16,6 +16,10 @@
                 Edit Project
             </a>
 
+            <a href="{{ route('assignment.index') }}" class="inline-block dark:bg-green-900 mb-5 p-4 rounded-md dark:text-gray-200">
+                Home
+            </a>
+
             <form action="{{ route('projects.destroy', $project->id) }}"  method="POST">
                 @method('DELETE')
                 @csrf

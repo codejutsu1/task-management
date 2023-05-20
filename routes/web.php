@@ -16,8 +16,8 @@ use App\Http\Controllers\ProjectController;
 */
 
 Route::get('/', function () {
-    return view('task/index');
-})->name('task.index');
+    return view('assignment/index');
+})->name('assignment.index');
 
 Route::resource('projects', ProjectController::class);
 Route::resource('tasks', TaskController::class)->except('index');

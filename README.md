@@ -80,4 +80,8 @@ $ npm run dev
 
 * You can drag and drop any task based on priority in the database and each task is displayed by ascending order of priority (from first to last).
 
+* When dragged and dropped in any order, it automatically updates in the database.
+
+* Use mobile data for the drag and drop functionality to work.
+
 * Contact me if you run into any issues.

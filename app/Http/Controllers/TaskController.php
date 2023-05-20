@@ -25,7 +25,7 @@ class TaskController extends Controller
      */
     public function create(Project $project)
     {
-        return view('task.task.create', compact('project'));
+        return view('assignment.task.create', compact('project'));
     }
 
     /**
@@ -48,7 +48,7 @@ class TaskController extends Controller
             'priority' => $priority_id + 1,
         ]);
 
-        return redirect()->route('projects.show',$project->id);
+        return redirect()->route('projects.show',$project->id)->with('message', 'Task successfully created');
 
     }
 
@@ -71,7 +71,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('task.task.edit', compact('task'));
+        return view('assignment.task.edit', compact('task'));
     }
 
     /**

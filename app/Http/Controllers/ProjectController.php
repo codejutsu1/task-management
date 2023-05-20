@@ -17,7 +17,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
-        return view('task.project.index', compact('projects')); 
+        return view('assignment.project.index', compact('projects')); 
     }
 
     /**
@@ -27,7 +27,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('task.project.create');
+        return view('assignment.project.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class ProjectController extends Controller
                                         ->orderBy('priority', 'asc')
                                         ->get();
 
-        return view('task.project.show', compact('project', 'tasks'));
+        return view('assignment.project.show', compact('project', 'tasks'));
     }
 
     /**
@@ -72,7 +72,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('task.project.edit', compact('project'));
+        return view('assignment.project.edit', compact('project'));
     }
 
     /**
