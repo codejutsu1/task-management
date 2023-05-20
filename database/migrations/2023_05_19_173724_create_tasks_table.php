@@ -20,7 +20,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('task_name');
-            $table->double('priority');
+            $table->integer('priority')->nullable();
             $table->timestamps();
         });
     }

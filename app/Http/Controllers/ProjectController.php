@@ -57,7 +57,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $tasks = Task::with('projects')->where('project_id', $project->id)->get();
+        $tasks = Task::with('projects')->where('project_id', $project->id)
+                                        ->orderBy('priority', 'asc')
+                                        ->get();
 
         return view('task.project.show', compact('project', 'tasks'));
     }
