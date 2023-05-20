@@ -46,7 +46,7 @@ class ProjectController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect()->route('projects.index')->with('message', 'Successful Stored.');
+        return redirect()->route('projects.index')->with('message', 'Successful Created.');
     }
 
     /**
