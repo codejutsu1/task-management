@@ -1,8 +1,10 @@
 <div>
     <ul class="py-4 space-y-8" wire:sortable="updateTaskPriority">
         @foreach($tasks as $task)
-        <li  wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}" class="flex justify-between dark:bg-zinc-400 p-3 rounded-md items-center" wire:sortable.handle>
-            <p class="w-3/5">{{ $task->task_name }}</p>
+        <li wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}" class="flex justify-between dark:bg-zinc-400 p-3 rounded-md items-center">
+            <div wire:sortable.handle class="w-3/5 py-8">
+                <p>{{ $task->task_name }}</p>
+            </div>
             <span class="flex flex-col items-center">
                 <a href="{{ route('tasks.edit', $task->id) }}" class="inline-block dark:bg-green-900 mb-3 p-2 rounded-md dark:text-gray-200">
                     Edit Task

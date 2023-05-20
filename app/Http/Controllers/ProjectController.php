@@ -46,7 +46,7 @@ class ProjectController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('message', 'Successful Stored.');
     }
 
     /**
@@ -92,7 +92,7 @@ class ProjectController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.show', $project->id)->with('message', 'Successfully updated your project name');
     }
 
     /**

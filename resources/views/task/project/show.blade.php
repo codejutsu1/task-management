@@ -4,6 +4,13 @@
     </x-slot>
 
     <div class="mt-8 bg-white dark:bg-gray-800 p-10 overflow-hidden shadow sm:rounded-lg">
+        @if(session()->has('message'))
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                <p class="font-bold">Successful</p>
+                <p>{{ session('message') }}</p>
+            </div>     
+        @endif 
+
         <div class="flex justify-between">
             <a href="{{ route('projects.edit', $project->id) }}" class="inline-block dark:bg-green-900 mb-5 p-4 rounded-md dark:text-gray-200">
                 Edit Project

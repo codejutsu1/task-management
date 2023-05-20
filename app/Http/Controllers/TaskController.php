@@ -91,7 +91,7 @@ class TaskController extends Controller
             'task_name' => $request->name
         ]);
 
-        return redirect()->route('projects.show', $task->project_id);
+        return redirect()->route('projects.show', $task->project_id)->with('message', 'Task successfully updated');
 
     }
 
