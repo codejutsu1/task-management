@@ -1,6 +1,12 @@
 ### Task Management with Laravel
 
-This is a simple Laravel Web Application for task management. It functionalities include CRUD for both Project and Task and also drag and drop functionality for the task. Each Project can have many tasks.
+This is a simple Laravel Web Application for task management. 
+
+It functionalities include CRUD for both Project and Task.
+
+It also has drag and drop functionality for the tasks. 
+
+Each Project can have many tasks.
 
 I used Livewire for the drag and drop functionality.
 
@@ -29,7 +35,7 @@ $ git clone https://github.com/codejutsu1/task-management
 
 * Copy everything in `.env.example` and paste in the `.env` file.
 
-* Open your `.env` file and change leave your database name as #task_management.
+* Open your `.env` file and change leave your database name as task_management.
 
 * By default, the username is root and you can leave the password empty. (For Xampp)
 
@@ -53,3 +59,16 @@ $ php artisan serve
 ## About the Project
 
 * This is a simple task management project.
+
+* If there is no styling, run
+$ npm run dev
+
+* On the homepage, a user has two option to either
+- Create a new project.
+- View recent project.
+
+* If you followed the instruction earlier and seeded data to the database, you will see list of projects on a dropdown menu.
+
+* You have the option to either create, read, update or delete any project from the database.
+
+* Each project can have many tasks. You have the option of creating a new task.
